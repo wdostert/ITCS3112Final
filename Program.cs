@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -29,7 +29,7 @@ class taskManager
             mainUser.userTaskList.printTasks();
 
             Console.WriteLine("\nWhat would you like to do?");
-            Console.WriteLine("1: Add Task\n2: Remove Task\n3: Edit Task\n4: Create New Task Group\n5: Delete Task Group\n6: View Task Groups\n7: Open Task Group\n8: Sort Tasks\n0: Exit");
+            Console.WriteLine("1: Add Task\n2: Remove Task\n3: Edit Task\n4: Create New Task Group\n5: Delete Task Group\n6: View Task Groups\n7: Open Task Group\n8: Sort Tasks\n9: Change Your Name\n0: Exit");
             input = Console.ReadLine();
             if (input == "1")
             {
@@ -38,7 +38,7 @@ class taskManager
 
                 if (input == "y")
                 {
-                    mainUser.userTaskList.addRepeatingTask();
+                    mainUser.addRepeatingTask();
                 }
                 else
                 {
@@ -47,7 +47,7 @@ class taskManager
 
                     if (input == "y")
                     {
-                        mainUser.userTaskList.addMultidayTask();
+                        mainUser.addMultidayTask();
                     }
                     else
                     {
@@ -79,11 +79,20 @@ class taskManager
             else if (input == "7")
             {
                 Console.WriteLine("\nEnter the name of the group to open");
-                mainUser.userTaskList.openGroup(Console.ReadLine());
+                mainUser.openGroup(Console.ReadLine());
             }
             else if (input == "8")
             {
-                mainUser.userTaskList.sortTasks();
+                mainUser.sortTasks();
+            }
+            else if (input == "9")
+            {
+                Console.WriteLine("\nEnter your new name");
+                mainUser.setName(Console.ReadLine());
+            }
+            else
+            {
+                 
             }
         }
     }
@@ -111,6 +120,16 @@ class User
         userTaskList.addTask();
     }
 
+    public void addRepeatingTask()
+    {
+        userTaskList.addRepeatingTask();
+    }
+
+    public void addMultidayTask()
+    {
+        userTaskList.addMultidayTask();
+    }
+
     public void removeTask()
     {
         userTaskList.removeTask();
@@ -134,6 +153,16 @@ class User
     public void printGroups()
     {
         userTaskList.printGroups();
+    }
+
+    public void openGroup(string name)
+    {
+        userTaskList.openGroup(name);
+    }
+
+    public void sortTasks()
+    {
+        userTaskList.sortTasks();
     }
 
     public string getName()
